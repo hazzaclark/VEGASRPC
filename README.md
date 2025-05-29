@@ -1,6 +1,4 @@
-﻿<span style="text-align: center; display: inline-block;">
 # VEGAS Pro Rich Presence for Discord
-</span>
 
 ![GitHub All Releases](https://img.shields.io/github/downloads/GlitchyPSIX/VEGASRPC/total?color=355fff&label=total%20downloads&style=flat-square)
 
