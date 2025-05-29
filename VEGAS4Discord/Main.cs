@@ -258,7 +258,7 @@ namespace VegasDiscordRPC
                     break;
 
                 case DisplayDetailType.TRACK_AND_FILENAME:
-                    UpdateWithProjectFilenameAndTracks(vegas);
+                    UpdateTNPF(vegas);
                     break;
 
                 case DisplayDetailType.TRACKS:
@@ -340,7 +340,7 @@ namespace VegasDiscordRPC
             }
         }
 
-        public void UpdateWithProjectFilenameAndTracks(Vegas vegas)
+        public void UpdateTNPF(Vegas vegas)
         {
             if (!_myConfig.CurrentConfig.PresenceEnabled) return;
 
