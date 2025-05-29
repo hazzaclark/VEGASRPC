@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.Collections;
 using ScriptPortal.Vegas;
@@ -249,12 +249,18 @@ namespace VegasDiscordRPC
         {
             switch (_myConfig.CurrentConfig.DisplayDetailType)
             {
-                case DisplayDetailType.PROJECT_FILENAME:
-                    UpdateWithProjectFilename(vegas);
-                    break;
                 case DisplayDetailType.MEDIA_EVENTS:
                     UpdateEventNumber(vegas);
                     break;
+
+                case DisplayDetailType.PROJECT_FILENAME:
+                    UpdateWithProjectFilename(vegas);
+                    break;
+
+                case DisplayDetailType.TRACK_AND_FILENAME:
+                    UpdateWithProjectFilenameAndTracks(vegas);
+                    break;
+
                 case DisplayDetailType.TRACKS:
                 default:
                     UpdateTrackNumber(vegas);
@@ -333,6 +339,48 @@ namespace VegasDiscordRPC
                 DiscordRpc.UpdatePresence(ref presence);
             }
         }
+
+        public void UpdateWithProjectFilenameAndTracks(Vegas vegas)
+        {
+            if (!_myConfig.CurrentConfig.PresenceEnabled) return;
+
+            SecondsSinceLastAction = 0;
+            resetPresence(ref presence, vegas);
+    
+            string projectFn = (vegas.Project.IsUntitled ? "<Untitled>" : vegas.Project.FilePath.Split('\\').Last());
+            presence.details = $"Editing {projectFn}";
+    
+            if (vegas.Project.Tracks.Count != 0)
+            {
+                int videotracks = vegas.Project.Tracks.Count(x => x.GetType() == typeof(VideoTrack));
+                int audiotracks = vegas.Project.Tracks.Count(x => x.GetType() == typeof(AudioTrack));
+
+                if (videotracks > 0 && audiotracks == 0)
+                {
+                    presence.state = "Video Only";
+                    presence.partySize = videotracks;
+                    presence.partyMax = videotracks;
+            }
+            else if (videotracks > 0 && audiotracks > 0)
+            {
+                presence.state = "Video and Audio";
+                presence.partySize = videotracks;
+                presence.partyMax = audiotracks + videotracks;
+            }
+            else if (videotracks == 0 && audiotracks > 0)
+            {
+                presence.state = "Audio Only";
+                presence.partySize = audiotracks;
+                presence.partyMax = audiotracks;
+            }
+        }
+        else
+        {
+            presence.state = "No tracks";
+        }
+    
+        DiscordRpc.UpdatePresence(ref presence);
+    }
 
         public void OpenSettings(Vegas vegas)
         {
