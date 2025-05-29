@@ -13,7 +13,9 @@ Because why not? There wasn't any before.
 
 This is an extension for VEGAS Pro from MAGIX VEGAS 14 up to VEGAS 21 (downloadable from MAGIX's website) that enables support for Discord's Rich Presence features.
 
-<img src="images/VEGAS_SS.png">
+![image](https://github.com/user-attachments/assets/4680b057-18e2-4f5b-b50e-b1970889e875)
+
+``Combines Project Filename and Track Info``
 
 ## Features
 
@@ -52,10 +54,14 @@ The folder(s) may or may not already exist. If they don't, create the folder. Th
 
 To build this extension, you need:
  * MAGIX VEGAS Pro 14 or later,
- * Visual Studio 2022
  * .NET Framework 4.8
 
-Drag your MAGIX VEGAS's ``ScriptPortal.Vegas.dll`` into the folder ``Libraries`` inside the "VEGAS4Discord" folder. This is because the library for VEGAS Scripting cannot be distributed.
+As of the recent developments that have come about with .NET, it is possible to get this project working in Visual Studio Code
+
+In order to do so, download the .NET 4.8 [Developer Pack](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-developer-pack-offline-installer) to use the .NET SDK within Visual Studio Code
+
+From there, it is just a case of running ``dotnet build`` within the project directory
+
 
 ## License
 
