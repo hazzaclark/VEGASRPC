@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,10 +18,12 @@ namespace VegasDiscordRPC.Forms
         public event EventHandler OnSave;
 
 
-        private List<ComboboxItem<DisplayDetailType>> _types = new() {
+        private List<ComboboxItem<DisplayDetailType>> _types = new()
+        {
             new ComboboxItem<DisplayDetailType>("Track Counts", DisplayDetailType.TRACKS),
             new ComboboxItem<DisplayDetailType>("Media Event Count", DisplayDetailType.MEDIA_EVENTS),
-            new ComboboxItem<DisplayDetailType>("Project Filename", DisplayDetailType.PROJECT_FILENAME)
+            new ComboboxItem<DisplayDetailType>("Project Filename", DisplayDetailType.PROJECT_FILENAME),
+            new ComboboxItem<DisplayDetailType>("Track Counts and Filename", DisplayDetailType.TRACK_AND_FILENAME)
         };
 
         public ConfigForm(ConfigManager manager)
