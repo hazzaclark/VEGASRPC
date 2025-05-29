@@ -1,10 +1,5 @@
 ﻿<span style="text-align: center; display: inline-block;">
-<img src="images/icon.png" style="width: 5em; height: 5em;">
-
 # VEGAS Pro Rich Presence for Discord
-
-Because why not? There wasn't any before.
-
 </span>
 
 ![GitHub All Releases](https://img.shields.io/github/downloads/GlitchyPSIX/VEGASRPC/total?color=355fff&label=total%20downloads&style=flat-square)
